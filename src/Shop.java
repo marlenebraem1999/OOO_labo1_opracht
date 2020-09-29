@@ -11,9 +11,9 @@ public class Shop {
 
     public Shop()
     {
-        productTitles = new ArrayList<String>();
-        productTypes = new ArrayList<String>();
-        productIds = new ArrayList<String>();
+        productTitles = new ArrayList<>();
+        productTypes = new ArrayList<>();
+        productIds = new ArrayList<>();
     }
 
     public double getPrice(int productidx, int days) {
@@ -91,5 +91,9 @@ public class Shop {
             int days = Integer.parseInt(daysString);
             JOptionPane.showMessageDialog(null, shop.getPrice(idx,days));
         }
+    }
+
+    public String name() {
+        return "HAllo";
     }
 }

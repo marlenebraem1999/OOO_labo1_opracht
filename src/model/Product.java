@@ -4,10 +4,13 @@ public abstract class Product {
 
     private String title;
     private String id;
+    //ik wil dat de ID's van nieuwe producten automatisch worden berekend (nieuw ID is 1 hoger dan hoogste ID in productenlijst.
+    private static int serialId = 0;
 
-    public Product(String title, String id) {
+    public Product(String title) {
         this.setTitle(title);
-        this.setId(id);
+        serialId++;
+        this.setId(Integer.toString(serialId));
     }
 
     public String getTitle() {
@@ -28,4 +31,8 @@ public abstract class Product {
 
     public abstract double getPrice(int days);
 
+    @Override
+    public String toString() {
+        return this.getId() + " - " + this.getTitle();
+    }
 }

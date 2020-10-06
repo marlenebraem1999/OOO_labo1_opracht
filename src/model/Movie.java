@@ -2,8 +2,8 @@ package model;
 
 public class Movie extends Product {
 
-    public Movie(String title, String id) {
-        super(title, id);
+    public Movie(String title) {
+        super(title);
     }
 
     @Override
@@ -14,5 +14,10 @@ public class Movie extends Product {
             price += (daysLeft * 2);
         }
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie: " + super.toString();
     }
 }

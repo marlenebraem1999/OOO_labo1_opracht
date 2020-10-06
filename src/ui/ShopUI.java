@@ -1,25 +1,25 @@
 package ui;
 
-import model.Game;
-import model.Movie;
-import model.Product;
-import model.Shop;
+import model.*;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShopUI {
     private Shop shop = new Shop();
 
     public void addProduct() {
         String title = JOptionPane.showInputDialog("Enter the title:");
-        String id = JOptionPane.showInputDialog("Enter the id:");
-        String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
+        String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/C for CD):");
 
         Product product = null;
         if (type.equals("M")) {
-            product = new Movie(title, id);
+            product = new Movie(title);
         } else if (type.equals("G")) {
-            product = new Game(title, id);
+            product = new Game(title);
+        } else if (type.equals("C")) {
+            product = new CD(title);
         }
 
         shop.addProduct(product);
@@ -31,7 +31,7 @@ public class ShopUI {
 
         if(product != null)
         {
-            JOptionPane.showMessageDialog(null, product.getTitle());
+            JOptionPane.showMessageDialog(null, product);
         }
     }
 
@@ -44,5 +44,19 @@ public class ShopUI {
             int days = Integer.parseInt(daysString);
             JOptionPane.showMessageDialog(null, product.getPrice(days));
         }
+    }
+    //ik wil een lijst kunnen opvragen van alle producten in de winkel, geordend als volgt: eerst de films, dan de games, dan de CD's. De lijst toon de categorie, id en omschrijving van de producten
+    public void showProductList() {
+        List<Product> products = shop.getProducts();
+        if (products.size() != 0) {
+            String message = "";
+            for (Product product : products) {
+                message += product.toString() + '\n';
+            }
+
+            JOptionPane.showMessageDialog(null, message);
+
+        }
+
     }
 }

@@ -16,6 +16,7 @@ public class Shop {
         products.add(p3);
     }
 
+
     public void addProduct(Product product) {
         this.products.add(product);
     }
@@ -27,6 +28,11 @@ public class Shop {
             }
         }
         return null;
+    }
+
+    //ik wil van een product kunnen zien of het beschikbaar is of uitgeleend via ingave van zijn ID
+    public boolean isProductUitgeleend(String id){
+       return getProduct(id).getIsUitgeleend();
     }
 
     public List<Product> getProducts() {

@@ -1,9 +1,14 @@
 package launcher;
 
+import model.Product;
 import model.Shop;
 import ui.ShopUI;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.List;
 
 public class ShopApp {
     public static void main(String[] args) {
@@ -24,5 +29,8 @@ public class ShopApp {
                 ui.showPrice();
             }
         }
+        ui.sluitAf();
+
+
     }
 }

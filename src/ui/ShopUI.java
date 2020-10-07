@@ -3,6 +3,9 @@ package ui;
 import model.*;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,5 +61,20 @@ public class ShopUI {
 
         }
 
+    }
+
+    public void sluitAf() {
+        File producten = new File("shop.txt");
+        try {
+            PrintWriter writer = new PrintWriter(producten);
+            writer.println();
+            List<Product> products = shop.getProducts();
+            for(Product p: products) {
+                writer.println(p);
+            }
+            writer.close();
+        } catch (FileNotFoundException ex) {
+            throw new IllegalArgumentException("Fout bij wegschrijven", ex);
+        }
     }
 }

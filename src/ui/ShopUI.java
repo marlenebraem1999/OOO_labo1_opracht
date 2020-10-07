@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ShopUI {
     private Shop shop = new Shop();
@@ -75,6 +76,19 @@ public class ShopUI {
             writer.close();
         } catch (FileNotFoundException ex) {
             throw new IllegalArgumentException("Fout bij wegschrijven", ex);
+        }
+    }
+
+    public void leesIn() {
+        ArrayList<Product> products = new ArrayList<>();
+        File productsFile = new File("shop.txt");
+        try {
+            Scanner scanner = new Scanner(productsFile);
+            while (scanner.hasNextLine()) {
+                String s = scanner.nextLine();
+                String[] delen = s.split("-");
+
+            }
         }
     }
 }

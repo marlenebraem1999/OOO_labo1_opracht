@@ -6,17 +6,6 @@ import java.util.List;
 public class Shop {
     private ArrayList<Product> products = new ArrayList<>();
 
-    public Shop() {
-        Product p1 = new Movie("The Hungergames");
-        Product p2 = new CD("Map of the soul");
-        Product p3 = new Game("Tomb Raider");
-
-        products.add(p1);
-        products.add(p2);
-        products.add(p3);
-    }
-
-
     public void addProduct(Product product) {
         this.products.add(product);
     }

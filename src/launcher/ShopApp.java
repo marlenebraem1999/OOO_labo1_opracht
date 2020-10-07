@@ -13,6 +13,8 @@ import java.util.List;
 public class ShopApp {
     public static void main(String[] args) {
         ShopUI ui = new ShopUI();
+        //bij opstarten bestand inlezen met producten
+        ui.leesIn();
 
         String menu = "1. Add product\n2. Show product\n3. Show products\n4. Show rental price\n\n0. Quit";
         int choice = -1;
@@ -30,7 +32,5 @@ public class ShopApp {
             }
         }
         ui.sluitAf();
-
-
     }
 }

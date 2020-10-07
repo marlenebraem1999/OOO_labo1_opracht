@@ -63,12 +63,11 @@ public class ShopUI {
         }
 
     }
-
+    //ik wil dat bij het afsluiten van mijn programma alle producten worden weggeschreven naar een bestand (shop.txt)
     public void sluitAf() {
         File producten = new File("shop.txt");
         try {
             PrintWriter writer = new PrintWriter(producten);
-            writer.println();
             List<Product> products = shop.getProducts();
             for(Product p: products) {
                 writer.println(p);
@@ -78,17 +77,33 @@ public class ShopUI {
             throw new IllegalArgumentException("Fout bij wegschrijven", ex);
         }
     }
-
+    //ik wil dat bij het opstarten van mijn programma alle items worden ingelezen uit een bestand (shop.txt)
     public void leesIn() {
-        ArrayList<Product> products = new ArrayList<>();
         File productsFile = new File("shop.txt");
         try {
             Scanner scanner = new Scanner(productsFile);
             while (scanner.hasNextLine()) {
                 String s = scanner.nextLine();
-                String[] delen = s.split("-");
-
+                String[] delen = s.split(": ");
+                String type = delen[0];
+                String[] info = delen[1].split(" - ");
+                String title = info[1];
+                Product product = null;
+                switch (type) {
+                    case "Movie":
+                        product = new Movie(title);
+                        break;
+                    case "Game":
+                        product = new Game(title);
+                        break;
+                    case "CD":
+                        product = new CD(title);
+                        break;
+                }
+                shop.addProduct(product);
             }
+        } catch (FileNotFoundException ex) {
+            throw new IllegalArgumentException("Fout bij inlezen", ex);
         }
     }
 }
